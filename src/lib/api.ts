@@ -1,32 +1,37 @@
-// TODO: Define a User interface matching JSONPlaceholder response:
-// { id, name, username, email, phone, website, company: { name } }
+export interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
+  company: { name: string };
+}
 
-// TODO: Define a Post interface:
-// { id, userId, title, body }
+export interface Post {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+}
 
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 
-// TODO: Implement fetchUsers() — GET /users
-// - Fetch all users from the API
-// - Check response.ok and throw on error
-// - Return typed User array
-export async function fetchUsers() {
-  // Your code here
-  return [];
+export async function fetchUsers(): Promise<User[]> {
+  const response = await fetch(`${BASE_URL}/users`);
+  if (!response.ok) throw new Error(`Failed to fetch users: ${response.status}`);
+  return response.json();
 }
 
-// TODO: Implement fetchUser(id) — GET /users/:id
-// - Fetch a single user
-// - Return null if not found (404)
-export async function fetchUser(id: number) {
-  // Your code here
-  return null;
+export async function fetchUser(id: number): Promise<User | null> {
+  const response = await fetch(`${BASE_URL}/users/${id}`);
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`Failed to fetch user: ${response.status}`);
+  return response.json();
 }
 
-// TODO: Implement fetchUserPosts(userId) — GET /users/:userId/posts
-// - Fetch all posts by a specific user
-// - Return typed Post array
-export async function fetchUserPosts(userId: number) {
-  // Your code here
-  return [];
+export async function fetchUserPosts(userId: number): Promise<Post[]> {
+  const response = await fetch(`${BASE_URL}/users/${userId}/posts`);
+  if (!response.ok) throw new Error(`Failed to fetch posts: ${response.status}`);
+  return response.json();
 }
