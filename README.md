@@ -13,7 +13,7 @@
 ### Build a Data Dashboard
 
 1. **Fork** this repository and **clone** your fork
-2. Run `npm install` and `npm run dev`
+2. Run `pnpm install` and `pnpm dev`
 3. Complete the data-fetching functions and display components
 
 #### Step 1: Fetch Users (`src/lib/api.ts`)
@@ -72,7 +72,7 @@ codecamp-exercise-api-fundamentals/
 ## Commands
 
 ```bash
-npm install     # Install dependencies
-npm run dev     # Start dev server at http://localhost:3000
-npm run build   # Build for production
+pnpm install     # Install dependencies
+pnpm dev     # Start dev server at http://localhost:3000
+pnpm build   # Build for production
 ```
